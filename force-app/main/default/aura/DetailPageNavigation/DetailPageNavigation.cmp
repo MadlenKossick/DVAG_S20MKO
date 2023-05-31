@@ -1,0 +1,4 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:availableForFlowScreens,force:appHostable,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:availableForFlowActions" access="global">
+   <aura:attribute name="recordId" type="String" access="global"/>
+    <aura:handler name="init" value="{!this}" action="{!c.invoke}" />    
+</aura:component>

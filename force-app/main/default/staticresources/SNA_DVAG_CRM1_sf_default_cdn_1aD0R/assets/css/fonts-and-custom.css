@@ -1,0 +1,271 @@
+/* Override for notification Icon for white background */
+
+.cHeaderTop .slds-icon-utility-notification svg.slds-icon.slds-icon_xx-small, .cHeaderTop .slds-icon-utility-search svg.slds-icon.slds-icon_x-small  {    
+    fill:rgba(87,87,87,0.8) ;
+}
+
+/* Adjustment for mobile page layout */
+@media only screen and (max-width: 47.9375em) {
+    /* fill background from action list (mobile)*/
+    .forceCommunityActionsContainerMobile {
+        background: white;
+    }
+
+    /* remove border bottom */
+    .siteforceInsuranceBody .cHeader .cHeaderTop {
+		border-bottom-color: white !important;
+	}
+    
+    
+    .siteforceInsuranceBody .cHeader .cAltToggleNav {
+		position: absolute;
+		left: 85%;
+	}
+    
+    .cLogo {
+		position: absolute;
+		left: 15% !important;
+	}
+    
+      .siteforceInsuranceBody .cHeader .cSearchInvokeMobile {
+		position: absolute;
+		left: 58%;
+        width: fit-content !important;
+	}
+    
+    .cNotifications {
+		position: absolute;
+		left: 60%;
+        width: fit-content !important;
+	}
+    
+    .cProfileMenu {
+		position: absolute;
+		left: 74%;
+        width: fit-content !important;
+	}
+    
+    .cBrandingLogo {
+        height: var(--lwc-insHeaderInnerDimension,50px) !important;
+    }
+    
+    .cFooterPanel {
+        overflow: hidden;
+    }
+    
+    /* FSCEC-1981: Fix search bar in mobile view */
+    .cHeaderWrapper {
+        position: relative;
+        z-index: 10;
+    }
+    
+    /** FSCEC-1990: hide "Schnellnachrichten" on mobile and hide new note **/
+    .mcdm_15QuickSend {
+        display: none;
+    }
+    
+   /** Other solution
+    div.forceCommunityActionsContainerMobile > button:nth-child(1) {
+        display: none;
+    }**/
+    
+    /** FSCEC-1987 Footer fix mobile **/
+    .cCenterPanel.slds-p-horizontal--medium.slds-grid.slds-gutters.cGenericFooterCmp {
+        display: table !important;
+    }
+    
+    .cFooterPanel {
+        overflow-wrap: anywhere;
+    }
+    
+    /**FSCEC-1983: turn off swipe left function**/
+    li.dark.actionable.uiInfiniteListRow.forceActionRow > div.body {
+        transform: none !important;
+    }
+    
+    /** Fix close icon **/
+    div.siteforceInsuranceBody div.cSearchContainer > lightning-icon > span > lightning-primitive-icon > svg {
+        fill: var(--dxp-g-root-contrast, black) !important;
+    }
+    
+    /** Fix background color of navigation **/
+    ul.comm-navigation__list li.slds-list__item {
+        background: white;
+    }
+    
+    ul.comm-navigation__list.slds-list_vertical {
+        background: white;
+    }
+}
+
+/** FSCEC-1987 Footer fix tablet **/
+@media only screen and (min-width: 47.9375em) and (max-width: 64.0625em) {
+    .cCenterPanel.slds-p-horizontal--medium.slds-grid.slds-gutters.cGenericFooterCmp {
+        display: grid !important;
+        grid-template-areas:
+    		'desc dataprot'
+    		'desc info';
+    }
+    
+    .cCenterPanel.slds-p-horizontal--medium.slds-grid.slds-gutters.cGenericFooterCmp > div:nth-child(1) {
+        grid-area: desc;
+    }
+    .cCenterPanel.slds-p-horizontal--medium.slds-grid.slds-gutters.cGenericFooterCmp > div:nth-child(2) {
+        grid-area: dataprot;
+    }
+    .cCenterPanel.slds-p-horizontal--medium.slds-grid.slds-gutters.cGenericFooterCmp > div:nth-child(3) {
+        grid-area: info;
+    }
+    
+    div.siteforceInsuranceBody > div.cCenterPanel.slds-m-top--x-large.slds-p-horizontal--medium {
+        min-height: 60vh;
+    }
+}
+
+
+/* Custom DVAG font "Marburger"*/ 
+
+@font-face {
+ font-family: "Marburger Light"; /* Name of Font, visible in Experience Cloud Builder */
+ font-style: normal;
+ font-weight: 300;
+ src: url(../resource/DVAGTypeWeb/WOFF2/DVAGType_W_Lt.woff2) format("woff2"),
+      url(../resource/DVAGTypeWeb/WOFF/DVAGType_W_Lt.woff) format("woff"),
+      url(../resource/DVAGTypeWeb/SVG/DVAGType_W_Lt.svg) format("svg"),
+      url(../resource/DVAGTypeWeb/EOT/DVAGType_W_Lt.eot) format("eot")
+}
+@font-face {
+ font-family: "Marburger Light Italic";
+ font-style: italic;
+ font-weight: 300;
+ src: url(../resource/DVAGTypeWeb/WOFF2/DVAGType_W_LtIt.woff2) format("woff2"),
+      url(../resource/DVAGTypeWeb/WOFF/DVAGType_W_LtIt.woff) format("woff"),
+      url(../resource/DVAGTypeWeb/SVG/DVAGType_W_LtIt.svg) format("svg")
+      url(../resource/DVAGTypeWeb/EOT/DVAGType_W_LtIt.eot) format("eot")
+}
+
+@font-face {
+ font-family: "Marburger Regular";
+ font-style: normal;
+ font-weight: 400;
+ src: url(../resource/DVAGTypeWeb/WOFF2/DVAGType_W_Rg.woff2) format("woff2"),
+      url(../resource/DVAGTypeWeb/WOFF/DVAGType_W_Rg.woff) format("woff"),
+      url(../resource/DVAGTypeWeb/SVG/DVAGType_W_Rg.svg) format("svg"),
+      url(../resource/DVAGTypeWeb/EOT/DVAGType_W_Rg.eot) format("eot")
+}
+
+@font-face {
+ font-family: "Marburger Italic";
+ font-style: italic;
+ font-weight: 400;
+ src: url(../resource/DVAGTypeWeb/WOFF2/DVAGType_W_It.woff2) format("woff2"),
+      url(../resource/DVAGTypeWeb/WOFF/DVAGType_W_It.woff) format("woff"),
+      url(../resource/DVAGTypeWeb/SVG/DVAGType_W_It.svg) format("svg"),
+      url(../resource/DVAGTypeWeb/EOT/DVAGType_W_It.eot) format("eot")
+}
+
+@font-face {
+ font-family: "Marburger Bold";
+ font-style: normal;
+ font-weight: 600;
+ src: url(../resource/DVAGTypeWeb/WOFF2/DVAGType_W_Bd.woff2) format("woff2"),
+      url(../resource/DVAGTypeWeb/WOFF/DVAGType_W_Bd.woff) format("woff"),
+      url(../resource/DVAGTypeWeb/SVG/DVAGType_W_Bd.svg) format("svg"),
+      url(../resource/DVAGTypeWeb/EOT/DVAGType_W_Bd.eot) format("eot")
+}
+
+@font-face {
+ font-family: "Marburger Bold Italic";
+ font-style: italic;
+ font-weight: 600;
+ src: url(../resource/DVAGTypeWeb/WOFF2/DVAGType_W_BdIt.woff2) format("woff2"),
+      url(../resource/DVAGTypeWeb/WOFF/DVAGType_W_BdIt.woff) format("woff"),
+      url(../resource/DVAGTypeWeb/SVG/DVAGType_W_BdIt.svg) format("svg"),
+      url(../resource/DVAGTypeWeb/EOT/DVAGType_W_BdIt.eot) format("eot")
+}
+
+/* Custom DVAG FSCEC-661 and FSCEC-662 specification". Please pay attention at breakpoints defined in https://gist.github.com/devor/93823710af64b77189a3*/
+@media only screen and (min-width: 64.0625em) {
+    .profileName {
+    	color: var(--lwc-brandNavigationColorText,rgb(43, 43, 43));
+    	text-shadow: 0 0 white !important;
+        text-align: left;
+        word-break: break-word;
+        white-space: initial !important;
+        overflow: hidden;
+        hyphens: auto;
+        display: -webkit-box !important;
+    	max-width: 200px !important;
+    	-webkit-line-clamp: 2;
+    	-webkit-box-orient: vertical;
+	}
+
+	.cProfileMenu {
+    	width: 25%;
+	}
+   
+}
+
+@media only screen and (min-width: 47.9375em) {
+    
+    .siteforceInsuranceBody .cHeader .cSearch {
+        margin-left: 5rem !important;
+    }
+
+	.cBrandingLogo {
+    	height: 4rem !important;
+        width: 4rem !important;
+        position: absolute !important;
+        top: 0;
+        margin-top: -1rem;
+	}
+
+	.cHeader .cHeaderTop {
+        padding: 0.5rem var(--lwc-spacingMedium,1rem) 4rem var(--lwc-spacingMedium,1rem) !important;
+	}
+    
+    .forceCommunityGlobalNavigation>*, .forceCommunityGlobalNavigation>*>.slds-grid {
+    	padding-left: var(--lwc-spacingMedium,1rem) !important;
+	}
+    
+    .siteforceInsuranceBody .cHeaderTopInternalWrapper {
+    	max-width: 1920px !important;
+    	padding-left: var(--lwc-spacingMedium,1rem) !important;
+    	padding-right: var(--lwc-spacingMedium,1rem) !important;
+	}
+
+	.siteforceInsuranceBody .comm-navigation>* {
+    	max-width: 1920px !important;
+    	padding-left: var(--lwc-spacingMedium,1rem) !important; 
+    	padding-right: var(--lwc-spacingMedium,1rem) !important;
+	}
+    
+    /** Fix menu background **/    
+    .comm-navigation__list ul.slds-list_vertical.slds-is-nested.slds-is-absolute {
+        background: white;
+    }
+}
+
+@media only screen and (min-width: 120em) {
+	.cLogo {
+        padding-left: 1rem;
+    }
+}
+
+.cFooterPanel {
+    background: #ededed;
+}
+
+/* Custom DVAG specification for hide edit possibilities on managed component Group Members - Financial Services Cloud */
+.FinServHouseholdMemberList .slds-button.slds-button--neutral.slds-button--small {
+    visibility: hidden;
+}
+
+.FinServHouseholdMemberList .slds-button.slds-button_icon-border.slds-button_icon-x-small {
+    visibility: hidden;
+}
+
+.ui-widget div > div:nth-child(4) button.slds-button.slds-button--neutral.slds-button--small {
+    visibility: hidden;
+}
+:root { --dxp-c-section-columns-max-width: 1170px; }

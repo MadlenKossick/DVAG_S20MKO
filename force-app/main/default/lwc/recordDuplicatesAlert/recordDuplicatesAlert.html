@@ -1,0 +1,27 @@
+<template>
+    <template if:true={hasDuplicates}>
+        <!--lightning-card  variant="Narrow"  title={label.PossibleDuplicates} class="red-icon" icon-name="utility:warning"-->
+        <lightning-card>
+            <h3 slot="title" style="white-space: break-spaces;">
+                <img src={svgErrorUrl} alt="Salesforce Logo" class="red-icon"/> &nbsp;
+                {label.PossibleDuplicates} ({duplicateList.length})
+            </h3>
+            <lightning-button  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions" label={label.ShowDuplicates} title="Dublette(n) anzeigen" onclick={showHideDuplicates}></lightning-button>           
+            <div data-id="duplicates" class="hide" >
+
+                <div class="app slds-p-around_x-large">
+                    <div>
+                    <template for:each={duplicateList} for:item="item">
+                      <div key={item.Id} class="row slds-var-p-around_small">
+                        <a class="account" onclick={openAccount} data-record-id={item.Id}>
+                            {item.Name}
+                        </a>
+                    </div>
+                    </template>
+                    </div>
+                    </div>
+
+            </div>
+        </lightning-card>
+    </template>
+  </template>

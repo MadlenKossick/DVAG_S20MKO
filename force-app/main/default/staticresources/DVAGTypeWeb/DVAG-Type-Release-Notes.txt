@@ -1,0 +1,27 @@
+==Release notes for DVAG Type==
+
+Compiler of release notes: Dalton Maag
+Designer: Dalton Maag
+Designer URL: daltonmaag.com
+
+Release date: 2021-02-09
+
+Change log:
+- v1.002: Adjusted vertical metrics to fix issues on Word and Excel, as reported by DVAG.
+- v1.001: Added eot and svg web fonts.
+- v1.000: This is the first release.
+
+Basic information
+1 Font name: DVAG Type
+2 TrueType Version record: 1.002
+3 Character Set: All European Latin
+4 Supported scripts: Latin
+5 Number of glyphs: 419
+6 Weights/Styles: Light, Light Italic, Regular, Italic, Bold, Bold Italic
+7 Usage: Text and Display
+
+Technology
+1 File formats: The files have been delivered in the TrueType-based OpenType format, for use in all major Operating Systems, and also as TTF for use in apps, and in web font format: WOFF; WOFF2.
+2 Embedding settings: Editing of the document is allowed (editable mode), subsetting is allowed.
+3 Hinting information: All glyphs are manually hinted for optimized rasterization in Microsoft ClearType or for other LCD devices.
+4 Default numerals: Tabular. Proportional figures accessible via OpenType features.

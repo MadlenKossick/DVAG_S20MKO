@@ -1,0 +1,74 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-card>
+    <div class="slds-page-header">
+      <div class="slds-page-header__row">
+          <div class="slds-page-header__col-title">
+              <div class="slds-media">
+                  <div class="slds-media__figure">
+                  <span class="slds-icon_container slds-icon-standard-email" title="email">
+                      <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+                  </span>
+                  </div>
+                  <div class="slds-media__body">
+                      <div class="slds-page-header__name">
+                          <div class="slds-page-header__name-title">
+                          <h1>
+                              <span class="slds-page-header__title slds-truncate" title={label.action}>{label.action}</span>
+                          </h1>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- spinner -->
+    <template lwc:if={showSpinner}>
+      <div class="slds-is-relative">
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_1-of-1">
+            <div class="fields_spinnerholder" style="height:100px;">
+              <lightning-spinner alternative-text={label.loading} size="large" variant="brand"></lightning-spinner>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </template>
+
+    <template lwc:else>
+      <!-- body -->
+      <div class="slds-grid slds-wrap">
+        <template lwc:if={hasData}>
+          <!-- search field 
+          <div class="slds-col slds-size_1-of-3 slds-m-top_large">
+            <c-ccg-datatable-filter all-data={allData} onfiltered={handleFilterResults}></c-ccg-datatable-filter> 
+          </div>
+          -->
+          <!-- data table -->
+          <div class="slds-col slds-size_3-of-3">
+            <label class="slds-form-element__label"></label>
+            <div style="height:150px;">
+              <lightning-datatable data={data} 
+                hide-table-header={hideTableHeader}
+                columns={columns}
+                key-field="id"
+                onrowselection={handleRowSelection}
+                max-row-selection="1">
+              </lightning-datatable>
+            </div>
+          </div>
+        </template>    
+      </div>
+     
+      <footer class="slds-card__footer slds-m-top_medium">
+        <lightning-button variant="neutral" label={label.cancel} onclick={handleCancel}></lightning-button>
+        <template lwc:if={hasData}>
+          <lightning-button variant="brand" label={label.save} onclick={handleSave} class="slds-m-left_x-small"></lightning-button>
+        </template>
+      </footer>     
+    </template>
+
+  </lightning-card>
+</template>

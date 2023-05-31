@@ -1,0 +1,102 @@
+<template>
+    <lightning-card title={label.DuplicatesList} icon-name="standard:record">
+        <div class="slds-form-element search">
+
+            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:search"></lightning-icon>
+                <input type="text" id="text-input-id-1" placeholder={label.ListSearch} class="slds-input "
+                    oninput={handleKeyChange} />
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-button-menu alternative-text="Show menu" icon-name="utility:settings"
+                    onselect={handleMenuItem}>
+                    <lightning-menu-item label={label.ExpandList} value="Extend"></lightning-menu-item>
+                    <lightning-menu-item label={label.CollapseList} value="Close"></lightning-menu-item>
+                </lightning-button-menu>
+            </div>
+        </div>
+
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered ">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th  scope="col">
+                        <a data-id="status" name="status" onclick={sortArrays}>
+                            {label.Name}
+                        </a>
+                        <template if:true={nameUpBool}>
+                            <lightning-icon icon-name="utility:arrowdown" size="x-small"></lightning-icon>
+                        </template>
+                        <template if:true={nameDWBool}>
+                            <lightning-icon icon-name="utility:arrowup" size="x-small"></lightning-icon>
+                        </template>
+                    </th>
+                    <th class="" scope="col">
+                        <a data-id="status" name="status" onclick={sort}>
+                            {label.Status}
+                        </a>
+                    </th>
+                    <th class="" scope="col">
+                        <a data-id="hauptwohnsitz" name="hauptwohnsitz" onclick={sort}>
+                            {label.MainResidenceAddress}
+                        </a>
+                    </th>
+
+                    <th class="" scope="col">
+                        <a data-id="geburtstag" name="geburtstag" onclick={sort}>
+                            {label.Birthdate}
+                        </a>
+                    </th>
+                    <th class="" scope="col">
+                        <a data-id="kundennummer" name="kundennummer" onclick={sort}>
+                            {label.AccountCustomerNumber}
+                        </a>
+                    </th>
+                  
+
+                </tr>
+            </thead>
+            <tbody>
+                <template if:true={record}>
+                    <template for:each={record} for:item="duplicate">
+                        <tr key={duplicate.groupName} class="slds-hint-parent">
+                            <td data-label="duplicate" colspan="100%" style="background-color: rgb(247,247,247);">
+                                <lightning-button-icon data-id={duplicate.groupName} icon-name={iconName}
+                                    alternative-text="extend" class="slds-m-left_xx-small" title="extend"
+                                    onclick={extend}></lightning-button-icon>
+                                <div class="account">{duplicate.groupName}({duplicate.size})</div> 
+                            </td>
+                        </tr>
+                        <template for:each={duplicate.duplicates} for:item="item">
+
+                            <tr key={item.accountId} data-id={duplicate.groupName} class="hide">
+                                <td data-label="duplicate">
+                                    <a onclick={openAccount} data-record-id={item.accountId} >
+                                        {item.name}
+                                    </a>
+
+                                </td>
+                                <td data-label="duplicate">
+                                    {item.status}
+                                </td>
+                                <td data-label="duplicate">
+                                    {item.hauptwohnsitz}
+                                </td>
+                                <td  data-label="duplicate">
+                                    {item.geburtstag}
+                                </td>
+                                <td data-label="duplicate">
+                                    {item.kundennummer}
+                                </td>
+                                
+                            </tr>
+
+                        </template>
+                    </template>
+
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

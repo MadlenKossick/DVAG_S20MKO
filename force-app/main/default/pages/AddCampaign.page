@@ -1,0 +1,212 @@
+<apex:page controller="HandleCampaignController" action="{!init}" showheader="false" sidebar="false" standardStylesheets="false" title="Select Campaigns" lightningStylesheets="true" >
+    <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.0/progressbar.min.js"></script>
+    <script>
+        
+        var allData = [];
+    var offset = 0; 
+    var batchSize = 100000;
+    
+    $(function() {
+        $.ajaxSetup({
+            headers: {"Authorization": 'Bearer {!$Api.Session_ID}'}
+        });
+        
+        
+    });
+    var campIdVariable;
+    
+    function setSelectedCampId(campId){
+        campIdVariable = campId;
+    }
+    
+    
+    
+    function selectCampaign(){
+        if(document.getElementById("progress")){
+            document.getElementById("progress").style.display = "block";
+        }
+        $('#message').removeClass('error-message').addClass('success-message');
+        $('#message').html('Der Prozess wurde gestartet. Bitte lassen Sie dieses Fenster geöffnet, bis 100 Prozent auf der Fortschrittsanzeige erreicht wurden.\
+Sie erhalten eine E-Mail, wenn alle Kontakte der Kampagne hinzugefügt wurden.');
+        executeQuery();
+    }
+    
+    
+    
+    function processRecords() {
+        var records = allData.slice(offset, offset + batchSize);
+        offset +=records.length;
+        
+        var contactIds = records.map((val)=>{return val['Contact.Id']});
+        bar.animate(offset / allData.length);
+        sendCampaignData(contactIds, campIdVariable);
+        
+    }    
+    
+    function executeQuery() {
+        var query = {};
+        var campId = "{!campId}"
+        query.statements = "{!JSENCODE(query)}";
+        var queryObj = {query: query.statements};
+        
+        
+        
+        function processChunk() {
+            $.ajax({
+                type: 'POST',
+                url: '/services/data/v39.0/wave/query',
+                data: JSON.stringify(queryObj),
+                contentType: 'application/json',
+                success: function(data) {
+                    allData=data.results.records;
+                    processRecords();
+                },
+            });
+        }
+        
+        processChunk();
+    }
+    
+    
+    function sendCampaignData(contactIds,campId) {
+        HandleCampaignController.sendCampaignData(contactIds,campIdVariable,function(result, event) {
+            if (offset < allData.length) {
+                setTimeout(processRecords(),1000);
+            }
+            
+            
+        });
+    }
+    
+    </script>
+    <apex:includeScript value="https://code.jquery.com/jquery-3.1.0.min.js"/>
+    <style>
+        
+        .TH_CLASS {
+        height: 50px;
+        
+        }
+        
+        td {
+        font-size: 12px;
+        }
+        th {
+        font-size: 12px;
+        }
+        table {
+        margin-bottom:10px; 
+        margin-left:10px; 
+        width:60%;
+        }
+        
+        
+        button{
+        background-color: blue;
+        
+        }
+        #message{
+        font-size: 15px;
+        margin-left:15px;
+        margin-top:10px;
+        
+        }
+        #message.success-message {
+        color: green;
+        }
+        
+        #message.error-message {
+        color: red;
+        }
+        .slds-form-element__control input[type="radio"] {
+        transform: scale(1.2);
+        }
+        .container .slds-box {
+        border: none;
+        }
+        
+    </style> 
+    
+    
+    <apex:form >
+        <apex:slds />
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <div class="slds-box" style="border:none">
+                    <h2 class="slds-text-heading_large slds-p-bottom_small slds-m-left_medium">Verfügbare Kampagnen</h2>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                        <thead>
+                            <tr class="slds-text-title_caps slds-line-height_reset TH_CLASS">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Select">WÄHLEN</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Campaign Name">Kampagnenname</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <apex:repeat value="{!campaignList}" var="cam">
+                                <tr class="slds-hint-parent">
+                                    <td class="slds-cell-wrap" data-label="Select">
+                                        <div class="slds-form-element">
+                                            <div class="slds-form-element__control">
+                                                <input type="radio" onclick="setSelectedCampId('{!cam.Id}');" name="Products" />                    
+                                                <apex:param name="conid" value="{!cam.Id}">
+                                                </apex:param>  
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="slds-cell-wrap" data-label="Campaign Name">
+                                        <div class="slds-truncate" title="{!cam.Name}">{!cam.Name}</div>
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </apex:form>
+    
+    <div style="display:none;margin-left:15px" id="progress"></div>
+    
+    
+    <div></div>
+    <div id="message"></div>  
+    
+    <div>
+        <button class="slds-button slds-button_neutral" onclick="selectCampaign()"  style =" margin-top:20px; margin-left:15px;font-size:16px;padding: 8px 16px;">Starten</button>
+    </div>
+    <script>
+    
+    var bar = new ProgressBar.Line('#progress', {
+        color: '#477b04 ',
+        strokeWidth: 2.5,
+        trailWidth: 1,
+        easing: 'easeInOut',
+        duration: 1000,
+        text: {
+            value: '0%',
+            style: {
+                color: '#000',
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                padding: 0,
+                margin: 0,
+                fontSize: '24px',
+                transform: {
+                    prefix: true,
+                    value: 'translate(-50%, -50%)'
+                }
+            }
+        },
+        from: { color: '#FFEA82' },
+        to: { color: '#ED6A5A' },
+        step: function(state, bar) {
+            bar.setText(Math.round(bar.value() * 100) + '%');
+        }
+    }); 
+    </script>
+</apex:page>

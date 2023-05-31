@@ -1,0 +1,25 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" description="Provides a simple footer with copyright and external links." access="global">
+    <aura:attribute name="footerCopyright" type="String" default="Experience Cloud Footer Copyright Text" access="global" />
+	<aura:attribute name="footerYear" type="String" default="2021" access="global" />
+    <aura:attribute name="footerLabel1" type="String" default="Data Privacy" access="global" />
+    <aura:attribute name="footerURL1" type="String" default="Enter some external URL here" access="global" />
+    <aura:attribute name="footerLabel2" type="String" default="Imprint" access="global" />
+    <aura:attribute name="footerURL2" type="String" default="Enter some external URL here" access="global" />
+    <aura:attribute name="footerLabel3" type="String" default="Terms of use" access="global" />
+    <aura:attribute name="footerURL3" type="String" default="Enter some external URL here" access="global" />
+
+    <div class="cCenterPanel slds-p-horizontal--medium slds-grid slds-gutters" style="max-width: 1440px">
+        <div class="slds-col" style="margin: 12px">
+            <span>&copy;{!v.footerYear}&nbsp;{!v.footerCopyright}</span>
+        </div>
+        <div class="slds-col" style="margin: 12px">
+        	<span><a href="{!v.footerURL1}" target="_blank">{!v.footerLabel1}</a></span>
+        </div>
+        <div class="slds-col" style="margin: 12px">
+	        <span><a href="{!v.footerURL2}" target="_blank">{!v.footerLabel2}</a></span>
+        </div>
+        <div class="slds-col" style="margin: 12px">
+	        <span><a href="{!v.footerURL3}" target="_blank">{!v.footerLabel3}</a></span>
+        </div>
+    </div>
+</aura:component>

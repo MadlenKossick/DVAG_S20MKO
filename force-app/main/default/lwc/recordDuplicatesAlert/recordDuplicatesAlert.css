@@ -1,0 +1,34 @@
+.red-icon{
+    --lwc-colorTextIconDefault: red;
+}
+
+.slds-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row:nth-child(even) {
+    background-color: grey;
+    
+}
+.row:nth-child(even) a {
+    color:white;
+}
+.row:nth-child(odd) {
+    background-color: white;
+}

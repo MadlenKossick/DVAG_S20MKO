@@ -1,0 +1,20 @@
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    float: right;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: table-row;
+}
+
+.account {
+    display: inline-block;;
+    margin-left: .5rem;
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>B_LeadDeletionTest</testClassName>
+    <testClassName>B_ShareRelatedObjectsTest</testClassName>
+    <testClassName>CCG_LogTest</testClassName>
+    <testClassName>C_DuplicatesTest</testClassName>
+    <testClassName>C_FileListTest</testClassName>
+    <testClassName>C_MicrosoftADSamlHandlerTest</testClassName>
+    <testClassName>C_SharingJobSchedulerTest</testClassName>
+    <testClassName>C_ZOBKeyCloakRegHandlerTest</testClassName>
+    <testClassName>ErrorUtilTest</testClassName>
+    <testClassName>EWETestMock</testClassName>
+    <testClassName>EWETests</testClassName>
+    <testClassName>LC_SetPrimaryHouseholdTest</testClassName>
+    <testClassName>LC_UtilsControllerTest</testClassName>
+    <testClassName>SharingTests</testClassName>
+    <testClassName>TH_AccountContactRelationManageHHTest</testClassName>
+    <testClassName>TH_AccountManageConsentTest</testClassName>
+    <testClassName>TH_AccountManageDeletionTest</testClassName>
+    <testClassName>TH_AccountManageHidingTest</testClassName>
+    <testClassName>TH_AccountManageSharingTest</testClassName>
+    <testClassName>TH_AdvisorToCustomerTest</testClassName>
+    <testClassName>TH_CampaignDataSharingTest</testClassName>
+    <testClassName>TH_CheckProductBeforeDeleteTest</testClassName>
+    <testClassName>TH_CommunicationChannelsTest</testClassName>
+    <testClassName>TH_ContactSharingChangeTest</testClassName>
+    <testClassName>TH_DeputyAssistantSharingTest</testClassName>
+    <testClassName>TH_IndividualSyncConsentToAccountTest</testClassName>
+    <testClassName>TH_IntegrationEventTest</testClassName>
+    <testClassName>TH_MarketingSynchronisationTest</testClassName>
+    <testClassName>TH_RelatedObjectSharingTest</testClassName>
+    <testClassName>TH_ToastEventTest</testClassName>
+    <testClassName>TH_UserGroupsTest</testClassName>
+    <testClassName>TH_UserPermissionSettingTest</testClassName>
+    <testClassName>TriggerHandlerTest</testClassName>
+    <testClassName>VBInfoPictureMock</testClassName>
+</ApexTestSuite>

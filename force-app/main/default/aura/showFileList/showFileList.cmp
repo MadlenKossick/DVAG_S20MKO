@@ -1,0 +1,19 @@
+<aura:component  controller="C_FileList" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId">
+
+    <aura:attribute name= "fileList" type="List" />
+    <aura:attribute name= "b_showFileList" type="Boolean" default="false" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.b_showFileList}">
+        <lightning:card variant="Narrow" title="{!$Label.c.Aura_FileList_Title}" iconName="standard:file">
+            <lightning:layout multipleRows="true">
+                <aura:iteration items="{!v.fileList}" var="file">
+                <lightning:layoutItem padding="around-small" size="12" smallDeviceSize="12" mediumDeviceSize="6" largeDeviceSize="3" >
+                    <lightning:fileCard fileId="{!file.value}" description="{!file.label}"/>
+                </lightning:layoutItem>
+                </aura:iteration>
+            </lightning:layout>
+    	</lightning:card>
+    </aura:if>
+</aura:component>

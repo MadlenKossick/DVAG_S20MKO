@@ -1,0 +1,10 @@
+<design:component label="Generic Footer">
+    <design:attribute name="footerCopyright" label="Footer Copyright Label" description="Text to show after copyright and year." />
+    <design:attribute name="footerYear" label="Year" description="Replace with current year for copyright." />
+    <design:attribute name="footerLabel1" label="Label Link 1" description="Replace with link label of an external site." />
+    <design:attribute name="footerURL1" label="URL Link 1" description="Replace with URL of an external site." />
+    <design:attribute name="footerLabel2" label="Label Link 2" description="Replace with link label of an external site." />
+    <design:attribute name="footerURL2" label="URL Link 2" description="Replace with URL of an external site." />
+    <design:attribute name="footerLabel3" label="Label Link 3" description="Replace with link label of an external site." />
+    <design:attribute name="footerURL3" label="URL Link 3" description="Replace with URL of an external site." />
+</design:component>

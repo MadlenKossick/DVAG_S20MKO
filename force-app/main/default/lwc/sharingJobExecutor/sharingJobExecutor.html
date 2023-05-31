@@ -1,0 +1,41 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+           <header class="slds-media slds-media_center slds-has-flexi-truncate">
+              <div class="slds-media__body">
+                 <h2 class="slds-card__header-title">
+                    <span>{label.SJE_Heading}</span>
+                 </h2>
+              </div>
+          </header>
+        </div>
+        <div class="slds-card__body slds-m-left_medium">
+            <div class="slds-text-heading_small slds-m-bottom_x-small" >Hierarchy Calculation</div>
+            <lightning-button variant="brand" label={label.SJS_StartAgentCalculation} title={label.SJS_StartAgentCalculation} onclick={handle_startAgentBatch} class="slds-p-right_x-small"></lightning-button>
+            
+            <div class="slds-grid">
+                <div class="slds-grow slds-p-right_xx-small">
+                    <lightning-input value={userIds} onchange={handleChange_UserIds} placeholder={label.SJE_IdPlaceHolder} type="text" label={label.SJE_UserIds}></lightning-input>
+                </div>
+                <div class="slds-p-right_small">
+                    <label class="slds-form-element__label slds-no-flex">&nbsp;</label><br />
+                    <lightning-button label={label.SJE_Add} title={label.SJE_Add} onclick={handle_addUserIds} class="slds-m-bottom_small"></lightning-button>
+                </div>
+            </div>
+
+            <div class="slds-text-heading_small slds-m-bottom_x-small slds-m-top_medium" >360° Calculation</div>
+            <lightning-button variant="brand" label={label.SJS_StartAccountRelatedObjectCalculation} title={label.SJS_StartAccountRelatedObjectCalculation} onclick={handle_startAccountRelatedObjectsBatch} class="slds-p-right_x-small"></lightning-button>
+        
+            <div class="slds-grid">
+                <div class="slds-grow slds-p-right_xx-small">
+                    <lightning-input value={accountIds} onchange={handleChange_AccountIds} placeholder={label.SJE_IdPlaceHolder} type="text" label={label.SJE_AccountIds}></lightning-input>
+                </div>
+                <div class="slds-p-right_small">
+                    <label class="slds-form-element__label slds-no-flex">&nbsp;</label><br />
+                    <lightning-button label={label.SJE_Add} title={label.SJE_Add} onclick={handle_addAccountIds} class="slds-m-bottom_small"></lightning-button>
+                </div>
+            </div>
+        </div>
+        <footer class="slds-card__footer"></footer>
+      </article>
+</template>
